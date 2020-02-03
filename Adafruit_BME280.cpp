@@ -96,7 +96,7 @@ bool Adafruit_BME280::init() {
   // init I2C or SPI sensor interface
   if (_cs == -1) {
     // I2C
-    _wire->begin();
+    return _wire->begin();
   } else {
     digitalWrite(_cs, HIGH);
     pinMode(_cs, OUTPUT);
@@ -109,6 +109,7 @@ bool Adafruit_BME280::init() {
       pinMode(_mosi, OUTPUT);
       pinMode(_miso, INPUT);
     }
+    return true;
   }
 
   // check if sensor, i.e. the chip ID is correct
